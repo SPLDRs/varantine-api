@@ -13,6 +13,7 @@ const upload = require('../_helpers/upload');
 //router.get('/', getAll);
 router.get('/:id',jwt(), getById);
 router.get('/:username/:name', jwt(), getByUserAndName);
+//router.get('/primary/:username', jwt(), getPrimaryByUser);
 router.put('/:id', jwt(), update);
 //router.post('/updateBg', jwt(), upload.single('bg'), updateBg);
 //router.put('/:username/:name', jwt(), getByUserAndName);

@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 
 module.exports = {
     User: require('../users/user.model'),
-    Collection: require('../houses/house.model'),
+    House: require('../houses/house.model'),
     //ImageBundle: require('../bundles/imageBundle.model'),
     //TextBundle: require('../bundles/textBundle.model'),
 };

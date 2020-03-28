@@ -12,7 +12,6 @@ module.exports = {
     getOwnerOf,
     create,
     update,
-    deleteContainedBundleByUserAndName,
     delete: _delete
 };
 
@@ -49,7 +48,7 @@ async function getOwnerOf(id){
 async function create(houseParam) {
     //console.log(houseParam);
     const house = new House(houseParam);
-
+    if (!house) throw "can't create house object.";
     // save house
     await house.save();
 }
@@ -73,23 +72,6 @@ async function update(id, houseParam) {
     Object.assign(house, houseParam);
 
     await house.save();
-}
-
-async function deleteContainedBundleByUserAndName(username, colName, bundleType, bundleId){
-    const house = await House.findOne({ owner: username, name: colName });
-    if (!house) throw 'House not found';
-    if(house.bundles){
-        for(let i = 0; i<house.bundles.length; i++){
-            let bundle = house.bundles[i];
-            if(bundle.type===bundleType && bundle.id===bundleId){
-                console.log(`delete bundle ${bundleId} from ${colName}`);
-                house.bundles.splice(i, 1);
-                i--;
-            }
-        }
-    }
-    await house.save();
-    
 }
 
 async function _delete(id) {

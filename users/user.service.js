@@ -11,6 +11,7 @@ module.exports = {
     getAll,
     getById,
     getByName,
+    getByNameAndPin,
     matchCheck,
     create,
     update,
@@ -18,6 +19,8 @@ module.exports = {
     getMyHouses,
     addHouse,
     deleteHouse,
+    setPrimary,
+    getPrimary,
     initMatch,
     terminateExistingMatch,
     acceptRequest,
@@ -53,6 +56,10 @@ async function getById(id) {
 
 async function getByName(username){
     return await User.findOne({ username: username }).select('-hash');
+}
+
+async function getByNameAndPin(username, pin){
+    return await User.findOne({ username: username, pin }).select('-hash');
 }
 
 async function matchCheck(username, pin){
@@ -158,6 +165,60 @@ async function deleteHouse(houseId){
     }
     houseService.delete(houseId);
     return await User.findById(user.id).select('houses');
+}
+
+
+async function setPrimary(userId, houseId){
+    //console.log(houseId);
+    const house = await houseService.getById(houseId);
+    if (!house) throw 'House not found.';
+    //console.log(house.name+" | "+house.owner);
+    const user = await User.findOne({username: house.owner});
+    if (!user || user._id != userId) throw 'User not found.';
+
+    let updateError=null;
+    let updateResult = null;
+    await User.updateOne({ _id: user.id }, 
+        { $pull: { houses: house.name } }, 
+        (err, result) => { 
+            updateError = err;
+            updateResult = result;
+        });
+    if(updateError) throw updateError;
+    else if (updateResult && updateResult.nModified==0){
+        throw 'User does not have this house';
+    }
+    await User.updateOne({ _id: user.id }, 
+        {$push: {
+            houses: {
+                $each: [house.name],
+                $position: 0
+            }
+        }}, 
+        (err, result) => { 
+            updateError = err;
+            updateResult = result;
+        }); 
+    await User.findOneAndUpdate(
+            { "houses.0": house.name },
+           { "$pop": { "houses": -1 } }, 
+           (err, result) => { 
+            updateError = err;
+            updateResult = result;
+        });
+    if(updateError) throw updateError;
+    else if (updateResult && updateResult.nModified==0){
+        throw 'user went crazy?';
+    }
+    return await User.findById(user.id).select('houses');
+}
+
+async function getPrimary(username){
+    const B = await User.findOne({ username: username}).select('-hash');
+    if (!B) throw 'Partner disappeared.';
+    if(!B.houses || B.houses.length <= 0) throw "Your partner doesn't have a house yet."
+    BHouseName = B.houses[0];
+    return BHouseName;
 }
 
 async function initMatch(id, BName, BPin){
