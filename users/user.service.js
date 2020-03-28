@@ -11,12 +11,17 @@ module.exports = {
     getAll,
     getById,
     getByName,
+    matchCheck,
     create,
     update,
     //updateAvatar,
     getMyHouses,
     addHouse,
     deleteHouse,
+    initMatch,
+    terminateExistingMatch,
+    acceptRequest,
+    declineRequest,
     delete: _delete
 };
 
@@ -48,6 +53,10 @@ async function getById(id) {
 
 async function getByName(username){
     return await User.findOne({ username: username }).select('-hash');
+}
+
+async function matchCheck(username, pin){
+    return await User.findOne({ username: username, pin, partnerName:null }).select('-hash');
 }
 
 async function create(userParam) {
@@ -149,6 +158,111 @@ async function deleteHouse(houseId){
     }
     houseService.delete(houseId);
     return await User.findById(user.id).select('houses');
+}
+
+async function initMatch(id, BName, BPin){
+    let user = await User.findById(id);
+    // validate
+    if (!user) throw 'User not found';
+
+    let updateError=null;
+    let updateResult = null;
+
+    const matched = await this.matchCheck(BName, BPin);
+    if (matched){
+        //TODO: push to userB
+        await User.updateOne({ _id: matched.id }, 
+            {activeRequest:JSON.stringify({from: user.username, withPin: BPin})}, 
+            (err, result) => { 
+                updateError = err;
+            updateResult = result;
+                });
+            if(updateError) throw updateError;
+            else if (updateResult && updateResult.nModified==0){
+                throw 'Request already sent.';
+            }
+    } else {
+        throw 'User unavailable';
+    }
+
+    user = await User.findById(id);
+    const { hash, ...userWithoutHash } = user.toObject();
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+        ...userWithoutHash,
+        token
+    };
+}
+
+async function terminateExistingMatch(id){
+    const user = await User.findById(id);
+    const BName = user.partnerName;
+    //console.log(BName);
+    // validate
+    if (!user) throw 'User not found';
+
+    user.partnerName = null;
+    user.partnerPin = null;
+    await user.save();
+    //console.log(BName);
+    if(BName){
+        const B = await User.findOne({ username: BName}).select('-hash');
+        if (!B) throw 'Partner disappeared.';
+        B.partnerName = null;
+        B.partnerPin = null;
+        await B.save();
+    }
+    
+    
+    const { hash, ...userWithoutHash } = user.toObject();
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+        ...userWithoutHash,
+        token
+    };
+}
+
+async function acceptRequest(id){
+    const user = await User.findById(id);
+    if (!user) throw 'User not found.';
+
+    let request = JSON.parse(user.activeRequest);
+    if(!request.withPin == user.pin) throw 'Your PIN has expired.';
+    let BName = request.from;
+    const B = await User.findOne({ username: BName, partnerName:null }).select('-hash');
+    if (!B) throw 'Partner not available.';
+    user.partnerName = BName;
+    user.partnerPin = B.pin;
+    user.activeRequest = null;
+    B.partnerName = user.username;
+    B.partnerPin = user.pin;
+    B.activeRequest = null;
+    await user.save();
+    await B.save();
+    
+    const { hash, ...userWithoutHash } = user.toObject();
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+        ...userWithoutHash,
+        token
+    };
+}
+
+async function declineRequest(id){
+    const user = await User.findById(id);
+
+    // validate
+    if (!user) throw 'User not found';
+    user.activeRequest = null;
+
+    await user.save();
+    
+    const { hash, ...userWithoutHash } = user.toObject();
+    const token = jwt.sign({ sub: user.id }, config.secret);
+    return {
+        ...userWithoutHash,
+        token
+    };
 }
 
 async function _delete(id) {

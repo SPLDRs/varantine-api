@@ -20,6 +20,10 @@ router.post('/uploadAvatar', jwt(), upload.single('avatar'), updateAvatar);
 router.post('/getMyHouses', jwt(), getMyHouses);
 router.post('/addHouse', jwt(), addHouse);
 router.post('/deleteHouse', jwt(), deleteHouse);
+router.post('/initMatch', jwt(), initMatch);
+router.post('/terminateExistingMatch', jwt(), terminateExistingMatch);
+router.post('/acceptRequest', jwt(), acceptRequest);
+router.post('/declineRequest', jwt(), declineRequest);
 //router.post('/addBundle', jwt(), addBundle);
 //router.post('/deleteBundle', jwt(), deleteBundle);
 
@@ -130,6 +134,38 @@ function getMyHouses(req, res, next){
     userService.getMyHouses(req.body.id)
     .then((user) => {
         res.json(user.houses)
+    })
+    .catch(err => next(err));
+}
+
+function initMatch(req, res, next){
+    userService.initMatch(req.body.id, req.body.BName, req.body.BPin)
+    .then((user) => {
+        res.json(user)
+    })
+    .catch(err => next(err));
+}
+
+function terminateExistingMatch(req, res, next){
+    userService.terminateExistingMatch(req.body.id)
+    .then((user) => {
+        res.json(user)
+    })
+    .catch(err => next(err));
+}
+
+function acceptRequest(req, res, next){
+    userService.acceptRequest(req.body.id)
+    .then((user) => {
+        res.json(user)
+    })
+    .catch(err => next(err));
+}
+
+function declineRequest(req, res, next){
+    userService.declineRequest(req.body.id)
+    .then((user) => {
+        res.json(user)
     })
     .catch(err => next(err));
 }
