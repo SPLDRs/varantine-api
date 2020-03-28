@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="261px" height="418px" viewBox="0 0 261 418" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>Slice</title>
+    <desc>Created with Sketch.</desc>
+    <g id="studio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#979797" stroke-width="5" fill="#C5CFCE" x="2.5" y="114.5" width="247" height="182"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#DCDAD5" x="34.5" y="139.5" width="77" height="124"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#F7F7F7" x="50.5" y="150.5" width="45" height="16"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#A2ABAD" x="34.5" y="179.5" width="77" height="84"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="124.5" y="139.5" width="104" height="19"></rect>
+        <circle id="Oval" stroke="#979797" fill="#FFFFFF" cx="177" cy="183" r="15.5"></circle>
+        <rect id="Rectangle" stroke="#979797" stroke-width="6" fill="#FFFFFF" x="4" y="0" width="174" height="110"></rect>
+        <line x1="80.25" y1="1.29032258" x2="80.25" y2="18.7096774" id="Line-4" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="90.5" y="6.5" width="22" height="36" rx="8"></rect>
+        <ellipse id="Oval" stroke="#979797" fill="#FFFFFF" cx="101.5" cy="27.5" rx="5" ry="8"></ellipse>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="90.5" y="6.5" width="22" height="7" rx="3.5"></rect>
+        <ellipse id="Oval" stroke="#979797" fill="#D8D8D8" cx="40.5" cy="8" rx="2" ry="1.5"></ellipse>
+        <rect id="Rectangle" stroke="#000000" fill="#D8D8D8" x="139.5" y="1.5" width="43" height="110"></rect>
+        <line x1="40.25" y1="1.28947368" x2="40.25" y2="11.7105263" id="Line-2" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="9.5" y="1.5" width="61" height="41"></rect>
+        <rect id="Rectangle-2" stroke="#979797" fill="#FFFFFF" x="19.5" y="12.5" width="41" height="19"></rect>
+        <path d="M169,5.5 L152,5.5 C149.928932,5.5 148.053932,6.33946609 146.696699,7.69669914 C145.339466,9.05393219 144.5,10.9289322 144.5,13 L144.5,98 C144.5,100.071068 145.339466,101.946068 146.696699,103.303301 C148.053932,104.660534 149.928932,105.5 152,105.5 L169,105.5 C171.071068,105.5 172.946068,104.660534 174.303301,103.303301 C175.660534,101.946068 176.5,100.071068 176.5,98 L176.5,13 C176.5,10.9289322 175.660534,9.05393219 174.303301,7.69669914 C172.946068,6.33946609 171.071068,5.5 169,5.5 Z M29,-1.5 C28.2979416,-1.5 27.6597463,-1.26780171 27.1987719,-0.883656313 C26.7738416,-0.529547783 26.5,-0.0435852885 26.5,0.5 C26.5,1.04358529 26.7738416,1.52954778 27.1987719,1.88365631 C27.6597463,2.26780171 28.2979416,2.5 29,2.5 C29.7020584,2.5 30.3402537,2.26780171 30.8012281,1.88365631 C31.2261584,1.52954778 31.5,1.04358529 31.5,0.5 C31.5,-0.0435852885 31.2261584,-0.529547783 30.8012281,-0.883656313 C30.3402537,-1.26780171 29.7020584,-1.5 29,-1.5 Z" id="Rectangle-3" stroke="#979797" fill="#FFFFFF"></path>
+        <line x1="162.25" y1="1.28571429" x2="162.25" y2="24.7142857" id="Line-3" stroke="#979797" stroke-linecap="square"></line>
+        <ellipse id="Oval" stroke="#979797" fill="#FFFFFF" cx="162" cy="29" rx="2.5" ry="3.5"></ellipse>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="29.5" y="4.5" width="20" height="5" rx="2.5"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="38.5" y="4.5" width="4" height="11" rx="2"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="76.5" y="18.5" width="7" height="8"></rect>
+        <ellipse id="Oval" stroke="#979797" fill="#D8D8D8" cx="80" cy="22.5" rx="3.5" ry="3"></ellipse>
+        <line x1="77.2692308" y1="22.25" x2="83.7307692" y2="22.75" id="Line-5" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="79.2857143" y1="18.2857143" x2="82.7142857" y2="25.7142857" id="Line-6" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="79.25" y1="25.6818182" x2="80.75" y2="19.3181818" id="Line-7" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="77.2916667" y1="23.75" x2="83.7083333" y2="21.25" id="Line-8" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#979797" fill="#E5DFDF" x="4.5" y="299.5" width="171" height="123"></rect>
+        <line x1="12.3571429" y1="382.294118" x2="26.6428571" y2="391.705882" id="Line" stroke="#979797" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="3.5" y="343.5" width="46" height="79"></rect>
+        <rect id="Rectangle-2" stroke="#979797" fill="#FFFFFF" x="9.5" y="348.5" width="35" height="25" rx="8"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#FFFFFF" x="10.5" y="383.5" width="32" height="32" rx="8"></rect>
+        <path d="M8.5,377.5 C7.66181953,377.5 6.90062136,377.786794 6.35052195,378.258308 C5.83049444,378.704046 5.5,379.317248 5.5,380 C5.5,380.682752 5.83049444,381.295954 6.35052195,381.741692 C6.90062136,382.213206 7.66181953,382.5 8.5,382.5 C9.33818047,382.5 10.0993786,382.213206 10.649478,381.741692 C11.1695056,381.295954 11.5,380.682752 11.5,380 C11.5,379.317248 11.1695056,378.704046 10.649478,378.258308 C10.0993786,377.786794 9.33818047,377.5 8.5,377.5 Z" id="Oval-2" stroke="#979797" fill="#F7F1F1"></path>
+        <path d="M12.811499,381.64019 L9.76513733,382.649088 L15.6317619,391.906783 L12.811499,381.64019 Z" id="Triangle" stroke="#979797" fill="#FFFFFF"></path>
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="3.5" y="299.5" width="171" height="43"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="105.5" y="309.5" width="16" height="16" rx="8"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="87.5" y="306.5" width="51" height="29"></rect>
+        <rect id="Rectangle" stroke="#282727" fill="#D8D8D8" x="105.5" y="308.5" width="16" height="16"></rect>
+        <line x1="106.333333" y1="310.5" x2="121.666667" y2="310.5" id="Line-3" stroke="#131313" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="312.5" x2="121.666667" y2="312.5" id="Line-4" stroke="#030202" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="314.25" x2="121.666667" y2="314.25" id="Line-5" stroke="#121212" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="316.5" x2="121.666667" y2="316.5" id="Line-6" stroke="#131313" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="319.5" x2="121.666667" y2="319.5" id="Line-7" stroke="#121212" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="320.5" x2="121.666667" y2="320.5" id="Line-8" stroke="#1E1D1D" stroke-linecap="square"></line>
+        <line x1="106.333333" y1="323.25" x2="121.666667" y2="323.25" id="Line-9" stroke="#141414" stroke-linecap="square"></line>
+        <rect id="Rectangle" stroke="#303030" fill="#D8D8D8" x="89.5" y="309.5" width="12" height="22" rx="6"></rect>
+        <rect id="Rectangle" stroke="#2F2E2E" fill="#D8D8D8" x="126.5" y="309.5" width="11" height="21" rx="5.5"></rect>
+        <ellipse id="Oval" stroke="#979797" fill="#000000" cx="132" cy="314.5" rx="1.5" ry="1"></ellipse>
+        <circle id="Oval" stroke="#979797" fill="#000000" cx="132" cy="324" r="1.5"></circle>
+        <ellipse id="Oval" stroke="#979797" fill="#020202" cx="96.5" cy="320.5" rx="3" ry="2"></ellipse>
+        <rect id="Rectangle" stroke="#979797" fill="#BEB0B0" x="3.5" y="299.5" width="42" height="17"></rect>
+        <line x1="89.3333333" y1="314.25" x2="100.666667" y2="314.25" id="Line-10" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="89.3333333" y1="327.25" x2="100.666667" y2="327.25" id="Line-11" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="95.5" y1="310.28125" x2="95.5" y2="318.71875" id="Line-12" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="95.5" y1="323.28125" x2="95.5" y2="331.71875" id="Line-13" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="89.4" y1="320.5" x2="92.6" y2="320.5" id="Line-14" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="100.166667" y1="320.5" x2="100.833333" y2="320.5" id="Line-15" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="126.4" y1="314.5" x2="129.6" y2="314.5" id="Line-16" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="126.4" y1="325.25" x2="129.6" y2="325.25" id="Line-18" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="132.25" y1="316.269231" x2="132.25" y2="322.730769" id="Line-21" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="126.34375" y1="320.25" x2="136.65625" y2="320.25" id="Line-23" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="132.5" y1="310.5" x2="132.5" y2="315.5" id="Line-19" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="132.5" y1="325.5" x2="132.5" y2="330.5" id="Line-20" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="134.5" y1="314.5" x2="137.5" y2="314.5" id="Line-22" stroke="#979797" stroke-linecap="square"></line>
+        <line x1="134.5" y1="324.5" x2="137.5" y2="324.5" id="Line-24" stroke="#979797" stroke-linecap="square"></line>
+    </g>
+</svg>
