@@ -4,9 +4,11 @@ const Schema = mongoose.Schema;
 const schema = new Schema({
     name:{type: String, required: true}, 
     owner: {type: String}, //username
-    partner: {type: String}, //another username
+    //partner: {type: String}, //another username
     housePlan: {type: String, default: "/default.svg"}, //svg
-    rooms:{type: Array} //center: (x, y), corners: [(x1, y1), (x2, y2) ...]
+    housePlanName: {type: String, default: "default"}, //svg
+    rooms:{type: Object}, //center: (x, y), corners: [(x1, y1), (x2, y2) ...]'
+    ref:{type: Object}
 });
 
 schema.set('toJSON', { virtuals: true });

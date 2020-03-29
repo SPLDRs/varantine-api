@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
 const houseService = require('../houses/house.service');
+const houseplans = require('../public/houseplans.json'); 
 //const bundleService = require('../bundles/bundle.service');
 
 module.exports = {
@@ -139,7 +140,24 @@ async function addHouse(id, house){
     else if (updateResult && updateResult.nModified==0){
         throw 'House name already exists.';
     }
-    houseService.create({...house, owner: user.username});
+    let houseplan = houseplans.find(o => o.name === house.housePlanName);
+    /*{
+        "name": "1b1b4",
+        "width": 513,
+        "height": 585,
+        "resolution": 90,
+        "bed2": "",
+        "bed1": "65, 107",
+        "livingroom": "161, 309",
+        "kitchen": "384, 402",
+        "bathroom1": "26, 555",
+        "bathroom2": "",
+        "study": ""
+      },*/
+    const {name, width, height, resolution, ...rooms} = houseplan;
+
+    houseService.create({...house, ref: {width, height, resolution}, 
+        owner: user.username, rooms});
     return await User.findById(id).select('houses');
 }
 
@@ -199,13 +217,13 @@ async function setPrimary(userId, houseId){
             updateError = err;
             updateResult = result;
         }); 
-    await User.findOneAndUpdate(
+    /*await User.findOneAndUpdate(
             { "houses.0": house.name },
            { "$pop": { "houses": -1 } }, 
            (err, result) => { 
             updateError = err;
             updateResult = result;
-        });
+        });*/
     if(updateError) throw updateError;
     else if (updateResult && updateResult.nModified==0){
         throw 'user went crazy?';
@@ -283,7 +301,7 @@ async function terminateExistingMatch(id){
     };
 }
 
-async function acceptRequest(id){
+async function acceptRequest(id, io){
     const user = await User.findById(id);
     if (!user) throw 'User not found.';
 
@@ -300,7 +318,9 @@ async function acceptRequest(id){
     B.activeRequest = null;
     await user.save();
     await B.save();
-    
+    let roomname = user.username>BName? user.username+"-"+BName: BName+"-"+user.username;
+    io.emit('joinRoom', {room:roomname});
+
     const { hash, ...userWithoutHash } = user.toObject();
     const token = jwt.sign({ sub: user.id }, config.secret);
     return {
