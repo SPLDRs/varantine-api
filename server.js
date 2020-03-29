@@ -5,6 +5,42 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const errorHandler = require('_helpers/error-handler');
 const upload = require('_helpers/upload');
+const http = require('http').createServer(app);
+const env = 'development';
+const config = require('./config')[env];
+const clientURL = config.clientURL;
+const sio = require("socket.io");
+const io = sio.listen(http, {
+    handlePreflightRequest: (req, res) => {
+        const headers = {
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Origin": req.headers.origin, 
+            //or the specific origin you want to give access to,
+            "Access-Control-Allow-Credentials": true
+        };
+        res.writeHead(200, headers);
+        res.end();
+    }
+});
+
+//io.on("connection", () => {
+//    console.log("Connected!");
+//});
+//io.origins(clientURL);
+io.on('connection', (socket) => {
+    console.log("Connected!");
+    socket.on('ping', (data) => {
+        console.log("Pinged!")
+        socket.emit('newLocation', data);
+    });
+    socket.on('stupid', (data) => {
+        console.log("Stupid Pinged!")
+        socket.broadcast.emit('newLocation', {bla:'bka'});
+        socket.broadcast.to(data).emit('newLocation', {bla:'I just met you'});
+    });
+});
+
+console.log("allowing connection from "+clientURL);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -36,9 +72,12 @@ app.post('/uploads', upload.single('image'), async (req, res) => {
     res.send(file)
 })
 
-
 // start server
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 4000;
-const server = app.listen(port, function () {
+//https://stackoverflow.com/questions/46376277/
+//vue-socket-io-connection-attempt-returning-no-access-control-allow-origin-hea
+const server = http.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
+
+
