@@ -11,8 +11,8 @@ const schema = new Schema({
     //imageBundles: {type: Array, required: false},
     //textBundles:{type: Array, required: false},
     houses: {type: Array, required: false}, //arrays of house-id's
-    partnerName: {type: String, required: false}, //another username
-    partnerPin: {type: String, required: false},
+    partnerName: {type: String, default: null}, //another username
+    partnerPin: {type: String, default: null},
     activeRequest: {type: String, required: false},
     avatar: {
         //data: Buffer

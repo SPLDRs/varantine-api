@@ -192,7 +192,7 @@ function terminateExistingMatch(req, res, next){
 }
 
 function acceptRequest(req, res, next){
-    userService.acceptRequest(req.body.id)
+    userService.acceptRequest(req.body.id, req.app.io)
     .then((user) => {
         res.json(user)
     })

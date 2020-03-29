@@ -29,16 +29,27 @@ const io = sio.listen(http, {
 //io.origins(clientURL);
 io.on('connection', (socket) => {
     console.log("Connected!");
-    socket.on('ping', (data) => {
-        console.log("Pinged!")
-        socket.emit('newLocation', data);
+    socket.on('pinLocation', (data) => {
+        console.log("server socket.on Pinned!");
+        console.log(data);
+        if(data.location && data.room){
+            console.log("server socket.on Pinned! with room "+data.room)
+            socket.broadcast.to(data.room).emit('partnerLocation', {location: data.location});
+        }
     });
-    socket.on('stupid', (data) => {
-        console.log("Stupid Pinged!")
-        socket.broadcast.emit('newLocation', {bla:'bka'});
-        socket.broadcast.to(data).emit('newLocation', {bla:'I just met you'});
+    socket.on('room', function(room){     // take room variable from client side
+        console.log("server socket.on join room "+room);
+        socket.join(room) // and join it
+        io.sockets.in(room).emit('message', {      // Emits a status message to the connect room when a socket client is connected
+            type: 'status',
+            text: 'Is now connected',
+            created: Date.now(),
+            //username: socket.request.user.username
+        });
     });
 });
+
+app.io = io;
 
 console.log("allowing connection from "+clientURL);
 

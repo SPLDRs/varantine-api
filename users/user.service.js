@@ -283,7 +283,7 @@ async function terminateExistingMatch(id){
     };
 }
 
-async function acceptRequest(id){
+async function acceptRequest(id, io){
     const user = await User.findById(id);
     if (!user) throw 'User not found.';
 
@@ -300,7 +300,9 @@ async function acceptRequest(id){
     B.activeRequest = null;
     await user.save();
     await B.save();
-    
+    let roomname = user.username>BName? user.username+"-"+BName: BName+"-"+user.username;
+    io.emit('joinRoom', {room:roomname});
+
     const { hash, ...userWithoutHash } = user.toObject();
     const token = jwt.sign({ sub: user.id }, config.secret);
     return {
