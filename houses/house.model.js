@@ -5,7 +5,7 @@ const schema = new Schema({
     name:{type: String, required: true}, 
     owner: {type: String}, //username
     partner: {type: String}, //another username
-    housePlan: {type: Object}, //svg
+    housePlan: {type: String, default: "/default.svg"}, //svg
     rooms:{type: Array} //center: (x, y), corners: [(x1, y1), (x2, y2) ...]
 });
 
